@@ -4,6 +4,8 @@ This project was created with [Create React App](https://github.com/facebook/cre
 
 In the project directory, you can run:
 
+### `yarn install`
+
 ### `yarn start`
 
 Runs the app in the development mode.<br>
