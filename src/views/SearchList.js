@@ -4,7 +4,8 @@ class SearchList extends Component {
     render() {
         return (
             <div>
-                <h1>Search List</h1>
+                <h2>Results</h2>
+                <hr/>
             </div>
         )
     }
