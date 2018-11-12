@@ -4,17 +4,41 @@ class Search extends Component {
     render() {
         return(
             <div>
-                <form>
+                <form onSubmit={this.props.handleSubmit}>
+                    <p>
+                        What are you searching for? 
+                    </p>
+
                     <label>
-                        What are you searching for? <br/>
-                        <input type="radio" name="search_item" value="people" /> People
-                        <input type="radio" name="search_item" value="movies" /> Movies <br/>
-                        <input type="text" name="search_text" placeholder="top level people/movie selection" /> <br/>
-                        <input type="submit" value="Submit" />
+                        <input 
+                            type="radio" 
+                            name="search_item" 
+                            value="people"
+                            /> 
+                            People
                     </label>
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="search_item" 
+                            value="films" 
+                            /> 
+                            Movies 
+                    </label>
+                    <label>
+                        <input 
+                            type="text" 
+                            placeholder="top level people/movie selection" 
+                            onChange={this.props.handleChange} 
+                        /> 
+                    </label>
+                        <input 
+                            type="submit" 
+                            value="Submit" 
+                        />
                 </form>
             </div>
-        )
+        );
     }
 }
 
