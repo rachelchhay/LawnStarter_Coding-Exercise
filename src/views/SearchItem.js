@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Details from "./Details";
 import { Redirect } from 'react-router-dom';
 
 class SearchItem extends Component {
