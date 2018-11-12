@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Search extends Component {
     render() {
         return(
-            <div>
+            <div className="SearchContainer">
                 <form onSubmit={this.props.handleSubmit}>
                     <p>
                         What are you searching for? 
@@ -28,13 +28,15 @@ class Search extends Component {
                     <label>
                         <input 
                             type="text" 
-                            placeholder="top level people/movie selection" 
+                            placeholder="Person name or movie title" 
                             onChange={this.props.handleChange} 
+                            className="SearchInput"
                         /> 
                     </label>
                         <input 
                             type="submit" 
-                            value="Submit" 
+                            value="Search"
+                            className="search-button" 
                         />
                 </form>
             </div>

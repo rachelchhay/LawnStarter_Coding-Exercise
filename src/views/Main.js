@@ -7,7 +7,9 @@ class Home extends Component {
     super(props);
     
     this.state = {
-        searchItem: ''
+        searchItem: '',
+        radioSelected: '',
+        results: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +29,15 @@ class Home extends Component {
       method: 'GET'
     })
     .then(response => response.json())
-    .then(parsedJSON => console.log(parsedJSON.results))
+    .then(parsedJSON => {
+      let results = Array.from(parsedJSON.results);
+      this.setState({
+        // need to loop through this
+        results
+      });
+      console.log(Array.from(parsedJSON.results));
+      console.log('Results from search: ' + this.state.results)
+    })
     .catch(error => console.log('Parsing failed', error))
   }
 
@@ -35,6 +45,9 @@ class Home extends Component {
     event.preventDefault();
 
     let radioSelected = document.querySelector('input[name=search_item]:checked').value;
+    this.setState({
+      radioSelected
+    });    
 
     this.search(radioSelected, this.state.searchItem);
 
@@ -45,14 +58,20 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Star Wars Movies & Characters Search</h1> 
-        <Search
-          selectedOption = {this.selectedOption}
-          handleSubmit = {this.handleSubmit}
-          handleChange = {this.handleChange}
-        />
-        <SearchList />
+      <div className="main">
+        <header>Star Wars Movies & Characters Search</header> 
+
+        <div className="search">
+            <Search
+              selectedOption = {this.selectedOption}
+              handleSubmit = {this.handleSubmit}
+              handleChange = {this.handleChange}
+            />
+            <SearchList 
+              results = {this.state.results}
+              radioSelected = {this.state.radioSelected}
+            />
+        </div>
       </div>
     )
   }
